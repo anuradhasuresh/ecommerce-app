@@ -1,21 +1,24 @@
 package com.anuradha.ecom.controller;
 
-import com.anuradha.ecom.Product;
-import com.anuradha.ecom.ProductRepository;
+import com.anuradha.ecom.entity.Product;
+import com.anuradha.ecom.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import io.swagger.annotations.ApiOperation;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
+@RequestMapping("/products")
 public class ProductController {
 
     @Autowired
     private ProductRepository productRepository;
 
-    @GetMapping("/products")
+    @ApiOperation(value = "Get all products", notes = "Returns a list of all available products")
+    @GetMapping("/getAll")
     @ResponseBody
     public List<Product> listProducts() {
         return productRepository.findAll();
@@ -24,11 +27,15 @@ public class ProductController {
 //        System.out.println(products.size());
 //        return products.toString();
     }
-    @PostMapping("/products/post")
+
+    @PostMapping("/postProduct")
+    @ApiOperation(value = "Create a new product", notes = "Creates a new product")
     @ResponseBody
     public Product addProduct(@RequestBody Product product) {
         return productRepository.save(product);
     }
+
+    @ApiOperation(value = "Get a product by name", notes = "Returns a list of all available products")
     @GetMapping("/byName")
     @ResponseBody
     public List<Product> findByName(@RequestParam String name) {

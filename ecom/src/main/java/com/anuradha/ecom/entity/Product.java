@@ -1,4 +1,4 @@
-package com.anuradha.ecom;
+package com.anuradha.ecom.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

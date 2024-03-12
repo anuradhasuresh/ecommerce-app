@@ -1,5 +1,6 @@
-package com.anuradha.ecom;
+package com.anuradha.ecom.repository;
 
+import com.anuradha.ecom.entity.ShoppingCart;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 

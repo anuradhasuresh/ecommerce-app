@@ -1,5 +1,6 @@
-package com.anuradha.ecom;
+package com.anuradha.ecom.entity;
 
+import com.anuradha.ecom.entity.Product;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class ShoppingCart {
     }
 
     public ShoppingCart() {
-
+        this.items = new ArrayList<>();
     }
 
     public void setItems(List<Product> items) {
@@ -28,6 +29,10 @@ public class ShoppingCart {
 
     public Long getUserId() {
         return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public List<Product> getItems() {

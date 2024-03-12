@@ -1,8 +1,8 @@
 package com.anuradha.ecom.controller;
 
-import com.anuradha.ecom.Product;
-import com.anuradha.ecom.ShoppingCart;
-import com.anuradha.ecom.ShoppingCartRepository;
+import com.anuradha.ecom.entity.Product;
+import com.anuradha.ecom.entity.ShoppingCart;
+import com.anuradha.ecom.repository.ShoppingCartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
