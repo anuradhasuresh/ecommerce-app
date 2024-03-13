@@ -3,16 +3,20 @@ package com.anuradha.ecom.controller;
 import com.anuradha.ecom.entity.Product;
 import com.anuradha.ecom.entity.ShoppingCart;
 import com.anuradha.ecom.repository.ShoppingCartRepository;
+import com.anuradha.ecom.service.ShoppingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+//@EnableSwagger2
 @Controller
 @RequestMapping("/shopping-cart")
 public class ShoppingCartController {
 
     @Autowired
     private ShoppingCartRepository shoppingCartRepository;
+    @Autowired
+    private ShoppingService shoppingService;
 
     @GetMapping("/{userId}")
     public ShoppingCart getShoppingCart(@PathVariable Long userId) {
@@ -30,6 +34,7 @@ public class ShoppingCartController {
 
         return shoppingCart;
     }
+//    @PostMapping("/")
 
     @DeleteMapping("/{userId}/remove")
     public ShoppingCart removeItemFromCart(@PathVariable Long userId, @RequestBody Product product) {
