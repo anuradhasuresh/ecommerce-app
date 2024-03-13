@@ -19,12 +19,14 @@ public class ShoppingCartController {
     private ShoppingService shoppingService;
 
     @GetMapping("/{userId}")
+    @ResponseBody
     public ShoppingCart getShoppingCart(@PathVariable Long userId) {
         return shoppingCartRepository.findByUserId(userId)
                 .orElse(new ShoppingCart(userId)); // Create a new cart if not found
     }
 
     @PostMapping("/{userId}/add")
+    @ResponseBody
     public ShoppingCart addItemToCart(@PathVariable Long userId, @RequestBody Product product) {
         ShoppingCart shoppingCart = shoppingCartRepository.findByUserId(userId)
                 .orElse(new ShoppingCart(userId));
@@ -37,6 +39,7 @@ public class ShoppingCartController {
 //    @PostMapping("/")
 
     @DeleteMapping("/{userId}/remove")
+    @ResponseBody
     public ShoppingCart removeItemFromCart(@PathVariable Long userId, @RequestBody Product product) {
         ShoppingCart shoppingCart = shoppingCartRepository.findByUserId(userId)
                 .orElse(new ShoppingCart(userId));
@@ -48,6 +51,7 @@ public class ShoppingCartController {
     }
 
     @DeleteMapping("/{userId}/clear")
+    @ResponseBody
     public void clearShoppingCart(@PathVariable Long userId) {
         shoppingCartRepository.deleteByUserId(userId);
     }
